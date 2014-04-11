@@ -1,0 +1,22 @@
+<%= form_for([current_user, current_user.profile], class: 'form-horizontal') do |f| %>
+  <fieldset>
+    <legend>Profile</legend>
+    <div class="form-group">
+      <%= f.label :first_name, class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :last_name, class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <%= f.submit 'Save', class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
