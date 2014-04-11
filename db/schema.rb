@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140411104012) do
 
-  create_table "profiles", force: true do |t|
+  create_table "profile", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "user_id"
