@@ -20,4 +20,5 @@ References
 [Ruby on Rails](http://rubyonrails.org/)
 [Ruby](https://www.ruby-lang.org/en/)
 [Bootstrap](http://getbootstrap.com/)
+[Bootstrap with Ruby on Rails](http://stackoverflow.com/questions/21962775/bootstrap-3rails-4-certain-glyphicons-not-working)
 [Ruby on Rails Guide](http://guides.rubyonrails.org/getting_started.html#hello-rails-bang)
