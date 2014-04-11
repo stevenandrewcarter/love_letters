@@ -1,6 +1,6 @@
-love_letters
+Love Letters
 ============
-Proof of concept of a Ruby on Rails application site. Plan to use it to prototype a couple of Site ideas and determine possible opportunities.
+Proof of concept of a Ruby on Rails application site. The site is intended as a prototype and as such do not expect complete functionality.
 
 Installation
 ------------
@@ -20,3 +20,4 @@ References
 [Ruby on Rails](http://rubyonrails.org/)
 [Ruby](https://www.ruby-lang.org/en/)
 [Bootstrap](http://getbootstrap.com/)
+[Ruby on Rails Guide](http://guides.rubyonrails.org/getting_started.html#hello-rails-bang)
