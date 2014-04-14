@@ -1,14 +1,20 @@
-<%= link_to 'New Message', new_user_message_path, class: 'btn btn-sm btn-primary' %>
-<table class="table">
+<div class="btn-toolbar" role="toolbar">
+  <%= link_to 'New', new_user_message_path, class: 'btn btn-sm btn-primary btn-group' %>
+  <%= link_to 'UnRead', '', class: 'btn btn-sm btn-default btn-group' %>
+  <%= link_to 'Delete', '', class: 'btn btn-sm btn-danger btn-group' %>
+</div>
+<table class="table table-condensed table-hover">
   <thead>
   <tr>
+    <th></th>
     <th>From</th>
     <th>Title</th>
     <th>Sent</th>
   </tr>
   </thead>
-  <% @messages.each do |message| %>
+  <% @messages.order(created_at: :desc).each do |message| %>
     <tr>
+      <td><input type="checkbox"></td>
       <td><%= message.sender.username %></td>
       <td><%= message.title %></td>
       <td><%= message.created_at %></td>

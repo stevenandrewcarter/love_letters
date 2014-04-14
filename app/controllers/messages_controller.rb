@@ -3,8 +3,11 @@ class MessagesController < ApplicationController
     @user = current_user
     @message = @user.sent_messages.create(message_params)
     @message.recipient = User.where(username: params[:message][:recipient]).first
-    @message.save!
-    redirect_to user_messages_path(@user)
+    if @message.save
+      redirect_to user_messages_path(@user)
+    else
+      render :new
+    end
   end
 
   def index
@@ -13,6 +16,7 @@ class MessagesController < ApplicationController
 
   def new
     @user = current_user
+    @message = @user.sent_messages.build
   end
 
   private

@@ -1,4 +1,5 @@
-<%= form_for([@user, @user.sent_messages.build]) do |f| %>
+<%= form_for([@user, @message]) do |f| %>
+  <%= render partial: 'shared/alerts', locals: {model: @message} %>
   <div class="form-group">
     <label class="col-lg-2 control-label" for="message_title">To</label>
     <div class="col-lg-10"><input autofocus="autofocus" id="message_recipient" name="message[recipient]" type="text" /></div>
