@@ -13,12 +13,18 @@
  *= require_tree .
  */
 
-/* Override Bootstrap 3 font locations */
-/*@font-face {*/
-    /*font-family: 'Glyphicons Halflings';*/
-    /*src: url('/assets/glyphicons-halflings-regular.eot');*/
-    /*src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),*/
-    /*url('/assets/glyphicons-halflings-regular.woff') format('woff'),*/
-    /*url('/assets/glyphicons-halflings-regular.ttf') format('truetype'),*/
-    /*url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');*/
-/*}*/
+.count-icon {
+    display: inline-block;
+    position: relative;
+}
+
+.count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 16px;
+    width: 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    text-align: center;
+}
