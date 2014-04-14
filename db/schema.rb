@@ -11,37 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414105903) do
-
-  create_table "conversations", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "message_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "conversations", ["message_id"], name: "index_conversations_on_message_id"
-  add_index "conversations", ["user_id"], name: "index_conversations_on_user_id"
-
-  create_table "mail_boxes", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "message_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "mail_boxes", ["message_id"], name: "index_mail_boxes_on_message_id"
-  add_index "mail_boxes", ["user_id"], name: "index_mail_boxes_on_user_id"
+ActiveRecord::Schema.define(version: 20140414103428) do
 
   create_table "messages", force: true do |t|
     t.string   "title"
     t.string   "body"
-    t.integer  "mailbox_id"
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "messages", ["mailbox_id"], name: "index_messages_on_mailbox_id"
 
   create_table "profiles", force: true do |t|
     t.string   "first_name"
@@ -66,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140414105903) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

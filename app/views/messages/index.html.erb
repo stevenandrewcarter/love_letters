@@ -1,0 +1,17 @@
+<%= link_to 'New Message', new_user_message_path, class: 'btn btn-sm btn-primary' %>
+<table class="table">
+  <thead>
+  <tr>
+    <th>From</th>
+    <th>Title</th>
+    <th>Sent</th>
+  </tr>
+  </thead>
+  <% @messages.each do |message| %>
+    <tr>
+      <td><%= message.sender.username %></td>
+      <td><%= message.title %></td>
+      <td><%= message.created_at %></td>
+    </tr>
+  <% end %>
+</table>
