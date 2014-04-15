@@ -1,7 +1,7 @@
 <div class="btn-toolbar" role="toolbar">
-  <a href="/messages/new" class="btn btn-sm btn-primary btn-group"><span class="glyphicon glyphicon-file"></span></a>
-  <%= link_to 'UnRead', '', class: 'btn btn-sm btn-default btn-group' %>
-  <a href="/users/<%= current_user.id %>/messages/delete" class="btn btn-sm btn-danger btn-group"><span class="glyphicon glyphicon-trash"></span></a>
+  <a href="/messages/new" class="btn btn-sm btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="New"><span class="glyphicon glyphicon-file"></span></a>
+  <a href="/users/<%= current_user.id %>/messages/unread" class="btn btn-sm btn-default btn-group" data-toggle="tooltip" data-placement="top" title="Mark Selected as Unread"><span class="glyphicon glyphicon-share"></span></a>
+  <a href="/users/<%= current_user.id %>/messages/delete" class="btn btn-sm btn-danger btn-group" data-toggle="tooltip" data-placement="top" title="Delete Selected"><span class="glyphicon glyphicon-trash"></span></a>
 </div>
 <table class="table table-condensed table-hover">
   <thead>

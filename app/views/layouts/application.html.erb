@@ -36,7 +36,7 @@
             <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
-      </ul>4
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><a href="/users/<%= current_user.id %>/messages"><span class="glyphicon glyphicon-envelope count-icon count"></span> <%= current_user.unread_messages.count %></a></li>
