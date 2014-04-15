@@ -1,6 +1,7 @@
+# Controller for the Messages Model
 class MessagesController < ApplicationController
   def create
-    @message = Message.create(message_params)
+    @message = Message.new(message_params)
     if @message.save
       @sender = current_user
       @receiver = User.where(username: params[:message][:recipient]).first
@@ -24,6 +25,8 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    @message.received_message.read = true
+    @message.received_message.save
   end
 
   private

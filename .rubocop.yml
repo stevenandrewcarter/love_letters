@@ -1,0 +1,32 @@
+CaseIndentation:
+  IndentOneStep: true
+
+CyclomaticComplexity:
+  Max: 10
+
+DotPosition:
+  Enabled: false
+
+FinalNewline:
+  Enabled: false
+
+LineLength:
+  Max: 200
+
+NumericLiterals:
+  Enabled: false
+
+ParameterLists:
+  Max: 8
+
+SignalException:
+  EnforcedStyle: only_raise
+
+SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+AllCops:
+  Exclude:
+    - db/**
+    - config/**
+    - script/**

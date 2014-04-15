@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   has_many :sent_messages, class_name: 'SentMessage', foreign_key: 'sender_id'
   has_many :received_messages, class_name: 'ReceivedMessage', foreign_key: 'recipient_id'
 
+  def unread_messages
+    received_messages.where(read: false)
+  end
+
   validates :username, presence: true, uniqueness: true
 
   after_create do

@@ -1,5 +1,5 @@
 <div class="btn-toolbar" role="toolbar">
-  <%= link_to 'New', new_message_path, class: 'btn btn-sm btn-primary btn-group' %>
+  <a href="/messages/new" class="btn btn-sm btn-primary btn-group"><span class="glyphicon glyphicon-file"></span></a>
   <%= link_to 'UnRead', '', class: 'btn btn-sm btn-default btn-group' %>
   <a href="/users/<%= current_user.id %>/messages/delete" class="btn btn-sm btn-danger btn-group"><span class="glyphicon glyphicon-trash"></span></a>
 </div>
@@ -13,7 +13,7 @@
   </tr>
   </thead>
   <% @messages.order(created_at: :desc).each do |received_message| %>
-    <tr class="info">
+    <tr <% unless received_message.read %>class="info"<% end %>>
       <td><input type="checkbox"></td>
       <td><%= link_to received_message.message.title, message_path(received_message.message.id) %></td>
       <td><%= received_message.sender.username %></td>
