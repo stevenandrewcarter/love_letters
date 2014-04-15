@@ -1,23 +1,23 @@
 <div class="btn-toolbar" role="toolbar">
-  <%= link_to 'New', new_user_message_path, class: 'btn btn-sm btn-primary btn-group' %>
+  <%= link_to 'New', new_message_path, class: 'btn btn-sm btn-primary btn-group' %>
   <%= link_to 'UnRead', '', class: 'btn btn-sm btn-default btn-group' %>
-  <%= link_to 'Delete', '', class: 'btn btn-sm btn-danger btn-group' %>
+  <a href="/users/<%= current_user.id %>/messages/delete" class="btn btn-sm btn-danger btn-group"><span class="glyphicon glyphicon-trash"></span></a>
 </div>
 <table class="table table-condensed table-hover">
   <thead>
   <tr>
-    <th></th>
-    <th>From</th>
+    <th width="1%"></th>
     <th>Title</th>
+    <th>From</th>
     <th>Sent</th>
   </tr>
   </thead>
-  <% @messages.order(created_at: :desc).each do |message| %>
-    <tr>
+  <% @messages.order(created_at: :desc).each do |received_message| %>
+    <tr class="info">
       <td><input type="checkbox"></td>
-      <td><%= message.sender.username %></td>
-      <td><%= message.title %></td>
-      <td><%= message.created_at %></td>
+      <td><%= link_to received_message.message.title, message_path(received_message.message.id) %></td>
+      <td><%= received_message.sender.username %></td>
+      <td><%= received_message.created_at %></td>
     </tr>
   <% end %>
 </table>

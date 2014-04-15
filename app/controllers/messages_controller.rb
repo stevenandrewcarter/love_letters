@@ -1,10 +1,14 @@
 class MessagesController < ApplicationController
   def create
-    @user = current_user
-    @message = @user.sent_messages.create(message_params)
-    @message.recipient = User.where(username: params[:message][:recipient]).first
+    @message = Message.create(message_params)
     if @message.save
-      redirect_to user_messages_path(@user)
+      @sender = current_user
+      @receiver = User.where(username: params[:message][:recipient]).first
+      @sender.sent_messages << SentMessage.new(message_id: @message.id, recipient_id: @receiver.id)
+      @sender.save
+      @receiver.received_messages << ReceivedMessage.new(message_id: @message.id, sender_id: @sender.id)
+      @receiver.save
+      redirect_to user_messages_path(current_user)
     else
       render :new
     end
@@ -15,8 +19,11 @@ class MessagesController < ApplicationController
   end
 
   def new
-    @user = current_user
-    @message = @user.sent_messages.build
+    @message = Message.new
+  end
+
+  def show
+    @message = Message.find(params[:id])
   end
 
   private
