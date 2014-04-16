@@ -1,9 +1,9 @@
-<div class="btn-toolbar" role="toolbar">
+<div class="btn-group" role="toolbar">
   <a href="/messages/new" class="btn btn-sm btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="New"><span class="glyphicon glyphicon-file"></span></a>
   <a href="/users/<%= current_user.id %>/messages/unread" class="btn btn-sm btn-default btn-group" data-toggle="tooltip" data-placement="top" title="Mark Selected as Unread"><span class="glyphicon glyphicon-share"></span></a>
-  <a href="/users/<%= current_user.id %>/messages/delete" class="btn btn-sm btn-danger btn-group" data-toggle="tooltip" data-placement="top" title="Delete Selected"><span class="glyphicon glyphicon-trash"></span></a>
+  <a href="" class="btn btn-sm btn-danger btn-group delete_selected" data-toggle="tooltip" data-placement="top" title="Delete Selected"><span class="glyphicon glyphicon-trash"></span></a>
 </div>
-<table class="table table-condensed table-hover">
+<table id="messages" class="table table-condensed table-hover">
   <thead>
   <tr>
     <th width="1%"></th>
@@ -13,11 +13,16 @@
   </tr>
   </thead>
   <% @messages.order(created_at: :desc).each do |received_message| %>
-    <tr <% unless received_message.read %>class="info"<% end %>>
-      <td><input type="checkbox"></td>
+    <tr id="<%= received_message.message.id %>" <% unless received_message.read %>class="info"<% end %>>
+      <td><input id="chk_message_<%= received_message.message.id %>" type="checkbox"></td>
       <td><%= link_to received_message.message.title, message_path(received_message.message.id) %></td>
       <td><%= received_message.sender.username %></td>
       <td><%= received_message.created_at %></td>
     </tr>
   <% end %>
 </table>
+<script>
+  $(function(){
+    window.app.setup();
+  });
+</script>
