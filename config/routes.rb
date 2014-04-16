@@ -16,8 +16,10 @@ LoveLetters::Application.routes.draw do
   resources :users do
     resources :profile
     resources :messages
+    resources :favourites
   end
   resources :messages
+  resources :search
 
   # Example resource route with options:
   #   resources :products do

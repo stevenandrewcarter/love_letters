@@ -1,9 +1,15 @@
 <p>
+  <strong>From:</strong>
+  <%= @sender.username %>
+</p>
+<p>
   <strong>Title:</strong>
   <%= @message.title %>
 </p>
-
 <p>
   <strong>Body:</strong>
   <%= @message.body %>
 </p>
+<hr/>
+<%= render partial: 'form', locals: {recipient: @sender, message: @reply_message} %>
+<%= link_to 'Back', user_messages_path(current_user.id) %>

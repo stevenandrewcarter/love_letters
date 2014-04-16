@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415081726) do
+ActiveRecord::Schema.define(version: 20140416113532) do
 
   create_table "messages", force: true do |t|
     t.string   "title"
@@ -51,6 +51,13 @@ ActiveRecord::Schema.define(version: 20140415081726) do
   end
 
   add_index "sent_messages", ["message_id"], name: "index_sent_messages_on_message_id"
+
+  create_table "user_has_favourites", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "user_favourite_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

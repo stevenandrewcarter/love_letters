@@ -26,6 +26,7 @@ class MessagesController < ApplicationController
   end
 
   def new
+    @recipient = User.find(params[:recipient_id]) if params[:recipient_id]
     @message = Message.new
   end
 
@@ -33,6 +34,8 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     @message.received_message.read = true
     @message.received_message.save
+    @reply_message = Message.new(title: "re:#{@message.title}")
+    @sender = @message.sent_message.sender
   end
 
   private
