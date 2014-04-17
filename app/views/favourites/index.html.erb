@@ -1,31 +1,26 @@
 <div class="row">
-  <div class="col-md-2">
-    <div class="btn-group" role="toolbar">
-      <a href="/messages/new" class="btn btn-sm btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="New"><span class="glyphicon glyphicon-file"></span></a>
-      <a href="/users/<%= current_user.id %>/messages/unread" class="btn btn-sm btn-default btn-group" data-toggle="tooltip" data-placement="top" title="Mark Selected as Unread"><span class="glyphicon glyphicon-share"></span></a>
-      <a href="" class="btn btn-sm btn-danger btn-group delete_selected" data-toggle="tooltip" data-placement="top" title="Delete Selected"><span class="glyphicon glyphicon-trash"></span></a>
-    </div>
-  </div>
-  <div class="col-md-2 col-md-offset-8">
+  <div class="col-md-2 col-md-offset-11">
     <p>Favourites: <span class="badge"><%= current_user.favourites.count %></span></p>
   </div>
 </div>
 <table id="messages" class="table table-condensed table-hover">
   <thead>
   <tr>
-    <th width="1%"></th>
     <th>Name</th>
     <th width="5%"></th>
   </tr>
   </thead>
   <% @favourites.order(created_at: :desc).each do |favourite| %>
     <tr id="<%= favourite.id %>">
-      <td><input id="chk_message_<%= favourite.id %>" type="checkbox"></td>
       <td><%= link_to favourite.favourite_user.username, user_path(favourite.id) %></td>
       <td>
         <div class="btn-group" role="toolbar">
           <a href="/messages/new?recipient_id=<%= favourite.favourite_user.id %>" class="btn btn-xs btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="Message"><span class="glyphicon glyphicon-file"></span></a>
-          <a href="/users/<%= current_user.id %>/favourites?user_id=<%= favourite.favourite_user.id %>" class="btn btn-xs btn-default btn-group" data-toggle="tooltip" data-placement="top" title="Favourite"><span class="glyphicon glyphicon-star-empty"></span></a>
+          <% if current_user.has_favourite?(favourite.favourite_user) %>
+            <a href="" onclick="window.app.removeFromFavourites(<%= current_user.id %>, <%= favourite.favourite_user.id %>)" class="btn btn-xs btn-default btn-group" data-toggle="tooltip" data-placement="top" title="Favourite"><span class="glyphicon glyphicon-star"></span></a>
+          <% else %>
+            <a href="" onclick="window.app.addToFavourites(<%= current_user.id %>, <%= favourite.favourite_user.id %>)" class="btn btn-xs btn-default btn-group" data-toggle="tooltip" data-placement="top" title="Favourite"><span class="glyphicon glyphicon-star-empty"></span></a>
+          <% end %>
         </div>
       </td>
     </tr>

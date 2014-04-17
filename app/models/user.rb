@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
     received_messages.count
   end
 
+  def has_favourite?(user)
+    !favourites.where(user_favourite_id: user.id).first.nil?
+  end
+
   validates :username, presence: true, uniqueness: true
 
   after_create do
