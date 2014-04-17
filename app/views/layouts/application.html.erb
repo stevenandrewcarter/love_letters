@@ -27,7 +27,8 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><a id="favourites" href="/users/<%= current_user.id %>/favourites"><span class="glyphicon glyphicon-star"></span></a></li>
-          <li><a id="unread_messages" href="/users/<%= current_user.id %>/messages"><span class="glyphicon glyphicon-envelope count-icon count"></span> <%= current_user.unread_messages.count %></a></li>
+          <li><a id="unread_messages" href="/users/<%= current_user.id %>/messages"><span class="glyphicon glyphicon-envelope count-icon count"></span> <%= current_user.unread_messages.count %></a>
+          </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.username %> <b class="caret"></b></a>
             <ul class="dropdown-menu">

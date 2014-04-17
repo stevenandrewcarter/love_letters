@@ -15,11 +15,11 @@
       <td><%= link_to favourite.favourite_user.username, user_path(favourite.favourite_user.id) %></td>
       <td>
         <div class="btn-group" role="toolbar">
-          <a href="/messages/new?recipient_id=<%= favourite.favourite_user.id %>" class="btn btn-xs btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="Message"><span class="glyphicon glyphicon-file"></span></a>
+          <a href="/messages/new?recipient_id=<%= favourite.favourite_user.id %>" class="btn btn-xs btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="Message"><span class="glyphicon glyphicon-envelope"></span></a>
           <% if current_user.has_favourite?(favourite.favourite_user) %>
-            <a href="" onclick="window.app.removeFromFavourites(<%= current_user.id %>, <%= favourite.favourite_user.id %>)" class="btn btn-xs btn-default btn-group" data-toggle="tooltip" data-placement="top" title="Favourite"><span class="glyphicon glyphicon-star"></span></a>
+            <a href="" onclick="window.app.removeFromFavourites(<%= current_user.id %>, <%= favourite.favourite_user.id %>)" class="btn btn-xs btn-group" data-toggle="tooltip" data-placement="top" title="Favourite"><span class="glyphicon glyphicon-star"></span></a>
           <% else %>
-            <a href="" onclick="window.app.addToFavourites(<%= current_user.id %>, <%= favourite.favourite_user.id %>)" class="btn btn-xs btn-default btn-group" data-toggle="tooltip" data-placement="top" title="Favourite"><span class="glyphicon glyphicon-star-empty"></span></a>
+            <a href="" onclick="window.app.addToFavourites(<%= current_user.id %>, <%= favourite.favourite_user.id %>)" class="btn btn-xs btn-group" data-toggle="tooltip" data-placement="top" title="Favourite"><span class="glyphicon glyphicon-star-empty"></span></a>
           <% end %>
         </div>
       </td>
