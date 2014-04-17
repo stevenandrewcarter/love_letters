@@ -7,7 +7,7 @@ class ProfileController < ApplicationController
     user = User.find(params[:user_id])
     profile = user.profile
     profile.update_attributes(profile_params)
-    user.save!
+    profile.save!
     redirect_to user_profile_path(user.id, profile.id)
   end
 

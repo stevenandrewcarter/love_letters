@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class ReceivedMessageTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'create' do
+    received_message = ReceivedMessage.create
+    assert received_message
+  end
 end

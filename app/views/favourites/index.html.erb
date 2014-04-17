@@ -12,7 +12,7 @@
   </thead>
   <% @favourites.order(created_at: :desc).each do |favourite| %>
     <tr id="<%= favourite.id %>">
-      <td><%= link_to favourite.favourite_user.username, user_path(favourite.id) %></td>
+      <td><%= link_to favourite.favourite_user.username, user_path(favourite.favourite_user.id) %></td>
       <td>
         <div class="btn-group" role="toolbar">
           <a href="/messages/new?recipient_id=<%= favourite.favourite_user.id %>" class="btn btn-xs btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="Message"><span class="glyphicon glyphicon-file"></span></a>
