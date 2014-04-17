@@ -4,9 +4,11 @@
     <label class="col-lg-2 control-label" for="message_title">To</label>
 
     <div class="col-lg-10">
-      <input autofocus="autofocus" id="message_recipient" name="message[recipient]" type="text" value="<%= recipient.nil? ? '' : recipient.username %>"
-             <% unless recipient.nil? %>readonly
-             <% end %> />
+      <% if recipient.nil? %>
+        <input autofocus="autofocus" id="message_recipient" name="message[recipient]" type="text"/>
+      <% else %>
+        <input id="message_recipient" name="message[recipient]" type="text" readonly value="<%= recipient.username %>"/>
+      <% end %>
     </div>
   </div>
   <div class="form-group">
@@ -15,7 +17,7 @@
   </div>
   <div class="form-group">
     <%= f.label :body, class: 'col-lg-2 control-label' %>
-    <div class="col-lg-10"><%= f.text_area :body, autofocus: true %></div>
+    <div class="col-lg-10"><%= f.text_area :body, autofocus: true, width: '100%' %></div>
   </div>
   <div class="form-group">
     <div class="col-lg-10 col-lg-offset-2"><%= f.submit 'Send', class: 'btn btn-sm btn-primary' %></div>
