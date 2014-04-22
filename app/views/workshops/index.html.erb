@@ -1,0 +1,20 @@
+<h1>Workshops <small>Schedule</small></h1>
+
+<div>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Workshop</th>
+      <th width="1%"></th>
+    </tr>
+    </thead>
+    <% @workshops.order(workshop_date: :desc).each do |workshop| %>
+      <tr>
+        <td><%= workshop.workshop_date %></td>
+        <td><%= workshop.workshop_name %></td>
+        <td><a href="/workshops/<%= workshop.id %>" class="btn btn-xs btn-group" data-toggle="tooltip" data-placement="top" title="Favourite"><span class="glyphicon glyphicon-info-sign"></span></a></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
