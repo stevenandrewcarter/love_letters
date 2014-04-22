@@ -1,0 +1,39 @@
+<!-- Brand and toggle get grouped for better mobile display -->
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-heart"></span></a>
+</div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <ul class="nav navbar-nav">
+    <li><a href="/how_it_works">How it Works</a></li>
+    <li><a href="/events">Events</a></li>
+    <li><a href="/workshops">Workshops</a></li>
+    <li><a href="/welcome/about_us">About Us</a></li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <% if user_signed_in? %>
+      <li><a href="/search"><span class="glyphicon glyphicon-search"></span> Browse</a></li>
+      <li><a id="favourites" href="/users/<%= current_user.id %>/favourites"><span class="glyphicon glyphicon-star"></span> Favourites</a></li>
+      <li>
+        <a id="unread_messages" href="/users/<%= current_user.id %>/messages"><span class="glyphicon glyphicon-envelope count-icon count"></span> <%= current_user.unread_messages.count %> Messages</a>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.username %> <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to 'Profile', user_profile_path(current_user.id, current_user.profile.id) %></li>
+          <li class="divider"></li>
+          <li><%= link_to 'Sign Out', '/users/sign_out', method: :delete, data: {confirm: 'Are you sure?'} %></li>
+        </ul>
+      </li>
+    <% else %>
+      <li><%= link_to 'Sign up', new_registration_path(resource_name) %></li>
+      <li><%= link_to 'Sign in', new_session_path(resource_name) %></li>
+    <% end %>
+  </ul>
+</div>

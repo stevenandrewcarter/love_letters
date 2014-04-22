@@ -1,14 +1,14 @@
 LoveLetters::Application.routes.draw do
   devise_for :users
+  # You can have the root of your site routed with "root"
+  root 'welcome#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get 'welcome/index'
 
-  # You can have the root of your site routed with "root"
-  root 'welcome#index'
-
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  get 'how_it_works' => 'how_it_works#index'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -17,9 +17,11 @@ LoveLetters::Application.routes.draw do
     resources :profile
     resources :messages
     resources :favourites
+    resources :events
   end
   resources :messages
   resources :search
+  resources :events
 
   # Example resource route with options:
   #   resources :products do

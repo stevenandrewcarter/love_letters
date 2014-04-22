@@ -1,0 +1,21 @@
+<h1>Events <small>Schedule</small></h1>
+
+<div>
+  <h3>Upcoming Events</h3>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Event</th>
+      <th width="1%"></th>
+    </tr>
+    </thead>
+    <% @events.order(event_date: :desc).each do |event| %>
+    <tr>
+      <td><%= event.event_date %></td>
+      <td><%= event.event_name %></td>
+      <td><a href="/events/<%= event.id %>" class="btn btn-xs btn-group" data-toggle="tooltip" data-placement="top" title="Favourite"><span class="glyphicon glyphicon-info-sign"></span></a></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
