@@ -6,9 +6,8 @@ LoveLetters::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get 'welcome/index'
-
-  # Example of regular route:
   get 'how_it_works' => 'how_it_works#index'
+  get 'about_us' => 'about_us#index'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -24,6 +23,14 @@ LoveLetters::Application.routes.draw do
   resources :search
   resources :events
   resources :workshops
+
+  resources :administrators do
+    resources :profile
+    resources :messages
+    resources :favourites
+    resources :events
+    resources :workshops
+  end
 
   # Example resource route with options:
   #   resources :products do

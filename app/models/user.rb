@@ -19,9 +19,14 @@ class User < ActiveRecord::Base
     !favourites.where(user_favourite_id: user.id).first.nil?
   end
 
+  def administrator?
+    is_administrator
+  end
+
   validates :username, presence: true, uniqueness: true
 
   after_create do
     self.profile = Profile.create!
+    self.is_administrator = false
   end
 end
