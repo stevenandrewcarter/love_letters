@@ -18,9 +18,6 @@
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <% if user_signed_in? %>
-      <% if can? :show, @administrator %>
-        <li><a href="/administrators"><span class="glyphicon glyphicon-cog"></span> Administrator</a></li>
-      <% end %>
       <li><a href="/search"><span class="glyphicon glyphicon-search"></span> Browse</a></li>
       <li><a id="favourites" href="/users/<%= current_user.id %>/favourites"><span class="glyphicon glyphicon-star"></span> Favourites</a></li>
       <li>

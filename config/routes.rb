@@ -24,14 +24,6 @@ LoveLetters::Application.routes.draw do
   resources :events
   resources :workshops
 
-  resources :administrators do
-    resources :profile
-    resources :messages
-    resources :favourites
-    resources :events
-    resources :workshops
-  end
-
   # Example resource route with options:
   #   resources :products do
   #     member do
