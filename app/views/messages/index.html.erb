@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-md-2">
     <div class="btn-group" role="toolbar">
-      <a href="/messages/new" class="btn btn-sm btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="New"><span class="glyphicon glyphicon-file"></span></a>
-      <a href="/users/<%= current_user.id %>/messages/unread" class="btn btn-sm btn-default btn-group" data-toggle="tooltip" data-placement="top" title="Mark Selected as Unread"><span class="glyphicon glyphicon-share"></span></a>
-      <a href="" class="btn btn-sm btn-danger btn-group delete_selected" data-toggle="tooltip" data-placement="top" title="Delete Selected"><span class="glyphicon glyphicon-trash"></span></a>
+      <a href="/messages/new" class="btn btn-xs btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="New"><span class="glyphicon glyphicon-file"></span></a>
+      <a href="/users/<%= current_user.id %>/messages/unread" class="btn btn-xs btn-default btn-group" data-toggle="tooltip" data-placement="top" title="Mark Selected as Unread"><span class="glyphicon glyphicon-share"></span></a>
+      <a href="" class="btn btn-xs btn-danger btn-group delete_selected" data-toggle="tooltip" data-placement="top" title="Delete Selected"><span class="glyphicon glyphicon-trash"></span></a>
     </div>
   </div>
-  <div class="col-md-1 col-md-offset-9">
+  <div class="col-md-2 col-md-offset-8">
     <p>Messages: <span class="badge"><%= current_user.total_messages %></span></p>
   </div>
 </div>
