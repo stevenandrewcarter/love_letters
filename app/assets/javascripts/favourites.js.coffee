@@ -1,8 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-window.app =
-  addToFavourites: (user_id, favourite_user_id) ->
+window.addToFavourites = (user_id, favourite_user_id) ->
     $.ajax
       url: '/users/' + user_id + '/favourites'
       type: 'POST'
@@ -18,7 +17,7 @@ window.app =
         console.log data
       dataType: "json"
 
-  removeFromFavourites: (user_id, favourite_user_id) ->
+window.removeFromFavourites = (user_id, favourite_user_id) ->
     $.ajax
       url: '/users/' + user_id + '/favourites/' + favourite_user_id
       type: 'DELETE'

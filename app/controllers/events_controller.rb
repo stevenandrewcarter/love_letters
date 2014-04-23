@@ -18,6 +18,16 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    @event = Event.find(params[:id])
+    @msg = @event.destroy ? {:status => 'ok', :message => 'Success!'} : {:status => 'failed', :message => 'Error!'}
+    respond_to { |format| format.json { render :json => @msg } }
+  end
+
+  def show
+    @event = Event.find(params[:id])
+  end
+
   private
 
   def event_params

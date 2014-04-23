@@ -5,7 +5,7 @@
   <div class="col-md-2">
     <div class="btn-group" role="toolbar">
       <a href="/events/new" class="btn btn-xs btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="New"><span class="glyphicon glyphicon-plus-sign"></span></a>
-      <a href="" class="btn btn-xs btn-danger btn-group delete_events" data-toggle="tooltip" data-placement="top" title="Delete Selected"><span class="glyphicon glyphicon-trash"></span></a>
+      <a href="" onclick="window.deleteEvents()" class="btn btn-xs btn-danger btn-group" data-toggle="tooltip" data-placement="top" title="Delete Selected"><span class="glyphicon glyphicon-trash"></span></a>
     </div>
   </div>
 </div>
@@ -22,7 +22,7 @@
     </tr>
     </thead>
     <% @events.order(event_date: :desc).each do |event| %>
-    <tr>
+    <tr id="<%= event.id %>">
       <td><% if can? :manage, event %><input id="chk_event_<%= event.id %>" type="checkbox"><% end %></td>
       <td><%= event.event_date %></td>
       <td><%= event.event_name %></td>
@@ -31,8 +31,3 @@
     <% end %>
   </table>
 </div>
-<script>
-  $(function () {
-    window.app.setup();
-  });
-</script>
