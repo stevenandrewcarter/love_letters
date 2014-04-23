@@ -14,8 +14,9 @@
 ActiveRecord::Schema.define(version: 20140422123915) do
 
   create_table "events", force: true do |t|
-    t.string   "event_name"
-    t.datetime "event_date"
+    t.string   "name"
+    t.datetime "date"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -87,8 +88,8 @@ ActiveRecord::Schema.define(version: 20140422123915) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "workshops", force: true do |t|
-    t.string   "workshop_name"
-    t.datetime "workshop_date"
+    t.string   "name"
+    t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

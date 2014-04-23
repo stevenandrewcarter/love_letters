@@ -20,10 +20,10 @@
       <th width="1%"></th>
     </tr>
     </thead>
-    <% @workshops.order(workshop_date: :desc).each do |workshop| %>
+    <% @workshops.order(date: :desc).each do |workshop| %>
       <tr>
-        <td><%= workshop.workshop_date %></td>
-        <td><%= workshop.workshop_name %></td>
+        <td><%= workshop.date %></td>
+        <td><%= workshop.name %></td>
         <td><a href="/workshops/<%= workshop.id %>" class="btn btn-xs btn-group" data-toggle="tooltip" data-placement="top" title="Favourite"><span class="glyphicon glyphicon-info-sign"></span></a></td>
       </tr>
     <% end %>

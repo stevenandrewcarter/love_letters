@@ -1,14 +1,33 @@
-<h1>Events <small>Schedule</small></h1>
+<h1>Events
+  <small>Schedule</small>
+</h1>
+
+<% if @featured_events %>
+  <div class="row">
+    <% @featured_events.each do |event| %>
+      <div class="col-sm-5 col-md-3">
+        <div class="thumbnail">
+          <img src="http://placehold.it/200X100" alt="Generic placeholder thumbnail">
+
+          <div class="caption">
+            <h3><%= event.name %></h3>
+            <p><a href="/events/<%= event.id %>" class="btn btn-xs btn-primary btn-block" data-toggle="tooltip" data-placement="top" title="Information">Book Now</a></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
 
 <% if can? :manage, @events %>
-<div class="row">
-  <div class="col-md-2">
-    <div class="btn-group" role="toolbar">
-      <a href="/events/new" class="btn btn-xs btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="New"><span class="glyphicon glyphicon-plus-sign"></span></a>
-      <a href="" onclick="window.deleteEvents()" class="btn btn-xs btn-danger btn-group" data-toggle="tooltip" data-placement="top" title="Delete Selected"><span class="glyphicon glyphicon-trash"></span></a>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="btn-group" role="toolbar">
+        <a href="/events/new" class="btn btn-xs btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="New"><span class="glyphicon glyphicon-plus-sign"></span></a>
+        <a href="" onclick="window.deleteEvents()" class="btn btn-xs btn-danger btn-group" data-toggle="tooltip" data-placement="top" title="Delete Selected"><span class="glyphicon glyphicon-trash"></span></a>
+      </div>
     </div>
   </div>
-</div>
 <% end %>
 
 <div>
@@ -21,13 +40,16 @@
       <th width="1%"></th>
     </tr>
     </thead>
-    <% @events.order(event_date: :desc).each do |event| %>
-    <tr id="<%= event.id %>">
-      <td><% if can? :manage, event %><input id="chk_event_<%= event.id %>" type="checkbox"><% end %></td>
-      <td><%= event.event_date %></td>
-      <td><%= event.event_name %></td>
-      <td><a href="/events/<%= event.id %>" class="btn btn-xs btn-group" data-toggle="tooltip" data-placement="top" title="Information"><span class="glyphicon glyphicon-info-sign"></span></a></td>
-    </tr>
+    <% @events.order(date: :desc).each do |event| %>
+      <tr id="<%= event.id %>">
+        <td>
+          <% if can? :manage, event %>
+            <input id="chk_event_<%= event.id %>" type="checkbox">
+          <% end %></td>
+        <td><%= event.date %></td>
+        <td><%= event.name %></td>
+        <td><a href="/events/<%= event.id %>" class="btn btn-xs btn-group" data-toggle="tooltip" data-placement="top" title="Information"><span class="glyphicon glyphicon-info-sign"></span></a></td>
+      </tr>
     <% end %>
   </table>
 </div>
