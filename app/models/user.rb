@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
     is_administrator
   end
 
+  def self.matches(user_id)
+    User.all
+  end
+
   validates :username, presence: true, uniqueness: true
 
   after_create do

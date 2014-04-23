@@ -8,6 +8,7 @@ LoveLetters::Application.routes.draw do
   get 'welcome/index'
   get 'how_it_works' => 'welcome#how_it_works'
   get 'about_us' => 'welcome#about_us'
+  get 'dashboard' => 'dashboard#index'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

@@ -2,22 +2,7 @@
   <small>Schedule</small>
 </h1>
 
-<% if @featured_events %>
-  <div class="row">
-    <% @featured_events.each do |event| %>
-      <div class="col-sm-5 col-md-3">
-        <div class="thumbnail">
-          <img src="http://placehold.it/200X100" alt="Generic placeholder thumbnail">
-
-          <div class="caption">
-            <h3><%= event.name %></h3>
-            <p><a href="/events/<%= event.id %>" class="btn btn-xs btn-primary btn-block" data-toggle="tooltip" data-placement="top" title="Information">Book Now</a></p>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+<%= render partial: 'shared/suggested_events', locals: {suggested_events: @suggested_events} %>
 
 <% if can? :manage, @events %>
   <div class="row">
