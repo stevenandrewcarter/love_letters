@@ -14,13 +14,13 @@ class FavouritesControllerTest < ActionController::TestCase
 
   test 'favourites create' do
     sign_in users(:one)
-    post :create, {'id' => 1, 'user_id' => 1, 'format' => 'json'}
+    post :create, {'id' => 1, 'user_id' => 1, 'favourite_user_id' => 1, 'format' => 'json'}
     assert_response :success
   end
 
   test 'favourites delete' do
     sign_in users(:one)
-    delete :destroy, {'id' => 1, 'user_id' => 1, 'format' => 'json'}
+    delete :destroy, {'id' => 1, 'user_id' => 1, 'favourite_user_id' => 1, 'format' => 'json'}
     assert_response :success
   end
 end

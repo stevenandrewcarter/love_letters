@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  workshop_name: MyString
-  workshop_date: MyString
+  name: MyString
+  date: MyString
 
 two:
-  workshop_name: MyString
-  workshop_date: MyString
+  name: MyString
+  date: MyString
