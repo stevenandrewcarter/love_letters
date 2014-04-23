@@ -8,4 +8,9 @@
       <% end %>
     </ul>
   </div>
+<% elsif model.changed? %>
+  <div id="success_explanation" class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>Success:</strong> Saved the provided values
+  </div>
 <% end %>

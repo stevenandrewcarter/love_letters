@@ -1,0 +1,40 @@
+<%= form_for [current_user, current_user.profile] do |f| %>
+  <%= render partial: 'shared/alerts', locals: {model: current_user.profile} %>
+  <fieldset>
+    <legend>Profile</legend>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="<%= current_user.profile.complete %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= current_user.profile.complete %>%;">
+        <%= current_user.profile.complete %>%
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :first_name, class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :last_name, class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :date_of_birth, class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.date_field :date_of_birth, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :gender, class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.select :gender, [%w(Male M), %w(Female F)], {}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <%= f.submit 'Save', class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
