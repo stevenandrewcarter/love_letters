@@ -1,19 +1,22 @@
 <% if suggested_events %>
-  <div class="row">
-    <h2>Events
-      <small>Recommended</small>
-    </h2>
-    <% suggested_events.each do |event| %>
-      <div class="col-sm-5 col-md-3">
-        <div class="thumbnail">
-          <img src="http://placehold.it/200X100" alt="Generic placeholder thumbnail">
+  <div class="container-fluid">
+    <div class="row">
+      <h2>Events
+        <small>Recommended</small>
+      </h2>
+      <% suggested_events.each do |event| %>
+        <div class="col-sm-5 col-md-3">
+          <div class="thumbnail">
+            <%= image_tag event.image.url(:medium) %>
 
-          <div class="caption">
-            <h3><%= event.name %></h3>
-            <p><a href="/events/<%= event.id %>" class="btn btn-xs btn-primary btn-block" data-toggle="tooltip" data-placement="top" title="Information">Book Now</a></p>
+            <div class="caption">
+              <h3><%= event.name %></h3>
+
+              <p><a href="/events/<%= event.id %>" class="btn btn-xs btn-primary btn-block" data-toggle="tooltip" data-placement="top" title="Information">Book Now</a></p>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 <% end %>

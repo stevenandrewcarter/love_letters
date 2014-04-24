@@ -1,29 +1,33 @@
-<div class="row">
-  <h2>Information</h2>
-  <%= render 'messages' %>
+<div class="container-fluid">
+  <div class="row">
+    <h2>Information</h2>
+    <%= render 'messages' %>
 
-  <%= render 'favourites' %>
+    <%= render 'favourites' %>
 
-  <%= render 'profile' %>
+    <%= render 'profile' %>
+  </div>
 </div>
 
-<div class="row">
-  <h2>Matches
-    <small>Suggested</small>
-  </h2>
-  <% @matches.each do |match| %>
-    <div class="col-sm-5 col-md-3">
-      <div class="thumbnail">
-        <img src="http://placehold.it/200X100" alt="Generic placeholder thumbnail">
+<div class="container-fluid">
+  <div class="row">
+    <h2>Matches
+      <small>Suggested</small>
+    </h2>
+    <% @matches.each do |match| %>
+      <div class="col-sm-5 col-md-3">
+        <div class="thumbnail">
+          <%= image_tag match.profile.photo.url(:thumb) %>
 
-        <div class="caption">
-          <h3><%= match.username %></h3>
+          <div class="caption">
+            <h3><%= match.username %></h3>
 
-          <p><a href="/users/<%= match.id %>" class="btn btn-xs btn-primary btn-block" data-toggle="tooltip" data-placement="top" title="Information">More</a></p>
+            <p><a href="/users/<%= match.id %>" class="btn btn-xs btn-primary btn-block" data-toggle="tooltip" data-placement="top" title="Information">More</a></p>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 <%= render partial: 'shared/suggested_events', locals: {suggested_events: @suggested_events} %>

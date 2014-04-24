@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :sent_messages, class_name: 'SentMessage', foreign_key: 'sender_id'
   has_many :received_messages, class_name: 'ReceivedMessage', foreign_key: 'recipient_id'
   has_many :favourites, class_name: 'UserHasFavourite'
+  validates :username, presence: true, uniqueness: true
 
   def unread_messages
     received_messages.where(read: false)
@@ -26,8 +27,6 @@ class User < ActiveRecord::Base
   def self.matches(user_id)
     User.all
   end
-
-  validates :username, presence: true, uniqueness: true
 
   after_create do
     self.profile = Profile.create!

@@ -1,3 +1,4 @@
+<%= image_tag current_user.profile.photo.url(:medium) %>
 <%= form_for [current_user, current_user.profile] do |f| %>
   <%= render partial: 'shared/alerts', locals: {model: current_user.profile} %>
   <fieldset>
@@ -29,6 +30,12 @@
       <%= f.label :gender, class: 'col-lg-2 control-label' %>
       <div class="col-lg-10">
         <%= f.select :gender, [%w(Male M), %w(Female F)], {}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :photo, class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.file_field :photo, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">

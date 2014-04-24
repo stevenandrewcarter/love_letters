@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+# Clear existing Users
+User.delete_all
+# Create the default admin user
+User.create!(email: 'admin@loveletters.com', password: 'password', username: 'administrator', is_administrator: true)
+# Create Test Users
+User.create!(email: 'test1@loveletters.com', password: 'password', username: 'test1', is_administrator: false)
+User.create!(email: 'test2@loveletters.com', password: 'password', username: 'test2', is_administrator: false)
+User.create!(email: 'test3@loveletters.com', password: 'password', username: 'test3', is_administrator: false)
+User.create!(email: 'test4@loveletters.com', password: 'password', username: 'test4', is_administrator: false)
