@@ -1,15 +1,6 @@
 <h1>Services</h1>
 
-<% if can? :manage, @services %>
-  <div class="row">
-    <div class="col-md-2">
-      <div class="btn-group" role="toolbar">
-        <a href="/services/new" class="btn btn-xs btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="New"><span class="glyphicon glyphicon-plus-sign"></span></a>
-        <a href="" class="btn btn-xs btn-danger btn-group delete_selected" data-toggle="tooltip" data-placement="top" title="Delete Selected"><span class="glyphicon glyphicon-trash"></span></a>
-      </div>
-    </div>
-  </div>
-<% end %>
+<%= render partial: 'shared/admin_tool_bar', locals: {collection: @services, source_name: 'services'} %>
 
 <div>
   <table class="table table-condensed table-hover">

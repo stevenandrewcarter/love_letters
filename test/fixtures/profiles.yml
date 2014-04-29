@@ -1,11 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
+valid_user_test_profile:
   first_name: Admin
   last_name: Admin
   user_id: 1
 
-two:
-  first_name: MyString
-  last_name: MyString
-  user_id: 1
+valid_user_another_test:
+  first_name: Another
+  last_name: Test
+  user_id: 2

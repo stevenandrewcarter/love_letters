@@ -6,21 +6,24 @@ class FavouritesControllerTest < ActionController::TestCase
     assert_response :redirect
   end
 
-  test 'favourites index' do
-    sign_in users(:one)
-    get :index, {'id' => 1, 'user_id' => 1}
-    assert_response :success
-  end
+  class LoggedInFavouritesControllerTest < ActionController::TestCase
+    def setup
+      sign_in users(:valid_user_test)
+    end
 
-  test 'favourites create' do
-    sign_in users(:one)
-    post :create, {'id' => 1, 'user_id' => 1, 'favourite_user_id' => 1, 'format' => 'json'}
-    assert_response :success
-  end
+    test 'favourites index' do
+      get :index, {'id' => 1, 'user_id' => 1}
+      assert_response :success
+    end
 
-  test 'favourites delete' do
-    sign_in users(:one)
-    delete :destroy, {'id' => 1, 'user_id' => 1, 'favourite_user_id' => 1, 'format' => 'json'}
-    assert_response :success
+    test 'favourites create' do
+      post :create, {'id' => 1, 'user_id' => 1, 'favourite_user_id' => 1, 'format' => 'json'}
+      assert_response :success
+    end
+
+    test 'favourites delete' do
+      delete :destroy, {'id' => 1, 'user_id' => 1, 'favourite_user_id' => 1, 'format' => 'json'}
+      assert_response :success
+    end
   end
 end

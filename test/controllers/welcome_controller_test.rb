@@ -6,9 +6,14 @@ class WelcomeControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'welcome index' do
-    sign_in users(:one)
-    get :index
-    assert_response :success
+  class LoggedInWelcomeControllerTest < ActionController::TestCase
+    def setup
+      sign_in users(:valid_user_test)
+    end
+
+    test 'welcome index' do
+      get :index
+      assert_response :success
+    end
   end
 end

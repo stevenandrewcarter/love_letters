@@ -1,0 +1,10 @@
+<% if can? :manage, collection %>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="btn-group" role="toolbar">
+        <a href="/<%= source_name %>/new" class="btn btn-xs btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="New"><span class="glyphicon glyphicon-plus-sign"></span></a>
+        <a href="" onclick="window.delete<%= source_name.capitalize %>()" class="btn btn-xs btn-danger btn-group" data-toggle="tooltip" data-placement="top" title="Delete Selected"><span class="glyphicon glyphicon-trash"></span></a>
+      </div>
+    </div>
+  </div>
+<% end %>

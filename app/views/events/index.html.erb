@@ -4,16 +4,7 @@
 
 <%= render partial: 'shared/suggested_events', locals: {suggested_events: @suggested_events} %>
 
-<% if can? :manage, @events %>
-  <div class="row">
-    <div class="col-md-2">
-      <div class="btn-group" role="toolbar">
-        <a href="/events/new" class="btn btn-xs btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="New"><span class="glyphicon glyphicon-plus-sign"></span></a>
-        <a href="" onclick="window.deleteEvents()" class="btn btn-xs btn-danger btn-group" data-toggle="tooltip" data-placement="top" title="Delete Selected"><span class="glyphicon glyphicon-trash"></span></a>
-      </div>
-    </div>
-  </div>
-<% end %>
+<%= render partial: 'shared/admin_tool_bar', locals: {collection: @events, source_name: 'events'} %>
 
 <div>
   <table id="events" class="table table-condensed table-hover">

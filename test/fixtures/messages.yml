@@ -1,10 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
+valid_message:
   id: 1
-  title: MyString
-  body: MyString
-
-two:
-  title: MyString
-  body: MyString
+  title: validMessage
+  body: validBody

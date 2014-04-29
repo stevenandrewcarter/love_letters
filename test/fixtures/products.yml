@@ -1,9 +1,4 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: MyString
-  date: MyString
-
-two:
-  name: MyString
-  date: MyString
+valid_product:
+  name: testProduct
+  description: testDescription
