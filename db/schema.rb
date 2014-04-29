@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429090453) do
+ActiveRecord::Schema.define(version: 20140429112506) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20140429090453) do
   create_table "messages", force: true do |t|
     t.string   "title"
     t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,6 +82,13 @@ ActiveRecord::Schema.define(version: 20140429090453) do
 
   add_index "sent_messages", ["message_id"], name: "index_sent_messages_on_message_id"
 
+  create_table "services", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_has_favourites", force: true do |t|
     t.integer  "user_id"
     t.integer  "user_favourite_id"
@@ -101,12 +115,5 @@ ActiveRecord::Schema.define(version: 20140429090453) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "workshops", force: true do |t|
-    t.string   "name"
-    t.datetime "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end

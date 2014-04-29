@@ -12,7 +12,7 @@ class Ability
       can :manage, UserHasFavourite, user_id: user.id
       can :manage, Profile, user_id: user.id
       can :read, Event, user_id: user.id
-      can :read, Workshop, user_id: user.id
+      can :read, Product, user_id: user.id
     end
 
     #   if user.admin?

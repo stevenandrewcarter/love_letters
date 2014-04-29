@@ -1,14 +1,14 @@
-<%= form_for @workshop do |f| %>
-  <%= render partial: 'shared/alerts', locals: {model: @workshop} %>
+<%= form_for @service do |f| %>
+  <%= render partial: 'shared/alerts', locals: {model: @service} %>
   <fieldset>
-    <legend>Workshop</legend>
+    <legend>Service</legend>
     <div class="form-group">
       <%= f.label :name, class: 'col-lg-2 control-label' %>
       <div class="col-lg-10"><%= f.text_field :name, autofocus: true, class: 'form-control' %></div>
     </div>
     <div class="form-group">
-      <%= f.label :date, class: 'col-lg-2 control-label' %>
-      <div class="col-lg-10"><%= f.date_field :date, autofocus: true, width: '100%', class: 'form-control' %></div>
+      <%= f.label :description, class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10"><%= f.text_area :description, autofocus: true, width: '100%', class: 'form-control' %></div>
     </div>
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2"><%= f.submit 'Save', class: 'btn btn-sm btn-primary' %></div>

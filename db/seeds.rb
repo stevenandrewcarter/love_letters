@@ -8,7 +8,8 @@
 # Clear existing Users
 User.delete_all
 # Create the default admin user
-User.create!(email: 'admin@loveletters.com', password: 'password', username: 'administrator', is_administrator: true)
+User.create!(email: 'admin@loveletters.com', password: 'password', username: 'administrator', is_administrator: true,
+             profile: Profile.new(first_name: 'admin', last_name: 'admin', gender: 'M', country_code: 'ZA', state_code: 'GT'))
 # Create Test Users
 User.create!(email: 'test1@loveletters.com', password: 'password', username: 'test1', is_administrator: false)
 User.create!(email: 'test2@loveletters.com', password: 'password', username: 'test2', is_administrator: false)

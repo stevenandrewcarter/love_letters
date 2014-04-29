@@ -29,7 +29,6 @@ class User < ActiveRecord::Base
   end
 
   after_create do
-    self.profile = Profile.create!
     self.is_administrator = false
   end
 end

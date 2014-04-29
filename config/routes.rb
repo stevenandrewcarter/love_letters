@@ -19,12 +19,14 @@ LoveLetters::Application.routes.draw do
     resources :messages
     resources :favourites
     resources :events
-    resources :workshops
+    resources :products
+    resources :services
   end
   resources :messages
   resources :search
   resources :events
-  resources :workshops
+  resources :products
+  resources :services
 
   # Example resource route with options:
   #   resources :products do
