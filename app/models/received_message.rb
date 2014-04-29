@@ -6,4 +6,16 @@ class ReceivedMessage < ActiveRecord::Base
 
   validates :sender_id, presence: true
   validates :recipient_id, presence: true
+
+  def message_title
+    message.title
+  end
+
+  def message_id
+    message.id
+  end
+
+  def sender_name
+    sender.username
+  end
 end

@@ -28,7 +28,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-    @msg = @event.destroy ? {status: 'ok', message: 'Success!'} : {status: 'failed', message: 'Error!'}
+    @msg = {status: @event.destroy, message: @event.errors.full_messages}
     respond_to { |format| format.json { render json: @msg } }
   end
 

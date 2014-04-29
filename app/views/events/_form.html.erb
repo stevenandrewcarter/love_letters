@@ -1,5 +1,5 @@
-<%= form_for @event do |f| %>
-  <%= render partial: 'shared/alerts', locals: {model: @event} %>
+<%= form_for event do |f| %>
+  <%= render partial: 'shared/alerts', locals: {model: event} %>
   <fieldset>
     <legend>New Event</legend>
     <div class="form-group">
@@ -18,7 +18,7 @@
       <%= f.label :image, class: 'col-lg-2 control-label' %>
       <div class="col-lg-10"><%= f.file_field :image, autofocus: true, width: '100%', class: 'form-control' %></div>
     </div>
-    <%= render partial: 'shared/country_select', locals: {owner: :event, country_code: @event.country_code } %>
+    <%= render partial: 'shared/country_select', locals: {owner: :event, country_code: event.country_code } %>
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2"><%= f.submit 'Save', class: 'btn btn-sm btn-primary' %></div>
     </div>

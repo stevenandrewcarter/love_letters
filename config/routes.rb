@@ -14,19 +14,19 @@ LoveLetters::Application.routes.draw do
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
-  resources :users do
+  resources :users, only: [:show] do
     resources :profile
-    resources :messages
-    resources :favourites
-    resources :events
-    resources :products
-    resources :services
+    resources :messages, except: [:edit, :update]
+    resources :favourites, only: [:create, :destroy, :index]
+    resources :events, except: [:edit, :update]
+    resources :products, only: [:new, :create, :index]
+    resources :services, only: [:new, :create, :index]
   end
-  resources :messages
+  resources :messages, except: [:edit, :update]
   resources :search
-  resources :events
-  resources :products
-  resources :services
+  resources :events, except: [:edit, :update]
+  resources :products, only: [:new, :create, :index]
+  resources :services, only: [:new, :create, :index]
 
   # Example resource route with options:
   #   resources :products do

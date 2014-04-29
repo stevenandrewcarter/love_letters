@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 20140429112506) do
   end
 
   add_index "received_messages", ["message_id"], name: "index_received_messages_on_message_id"
+  add_index "received_messages", ["recipient_id"], name: "index_received_messages_on_recipient_id"
+  add_index "received_messages", ["sender_id"], name: "index_received_messages_on_sender_id"
 
   create_table "sent_messages", force: true do |t|
     t.integer  "sender_id"
@@ -81,6 +83,8 @@ ActiveRecord::Schema.define(version: 20140429112506) do
   end
 
   add_index "sent_messages", ["message_id"], name: "index_sent_messages_on_message_id"
+  add_index "sent_messages", ["recipient_id"], name: "index_sent_messages_on_recipient_id"
+  add_index "sent_messages", ["sender_id"], name: "index_sent_messages_on_sender_id"
 
   create_table "services", force: true do |t|
     t.string   "name"
@@ -95,6 +99,9 @@ ActiveRecord::Schema.define(version: 20140429112506) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "user_has_favourites", ["user_favourite_id"], name: "index_user_has_favourites_on_user_favourite_id"
+  add_index "user_has_favourites", ["user_id"], name: "index_user_has_favourites_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

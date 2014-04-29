@@ -24,8 +24,8 @@
         <% unless received_message.read %>class="info"
         <% end %>>
       <td><input id="chk_message_<%= received_message.message.id %>" type="checkbox"></td>
-      <td><%= link_to received_message.message.title, message_path(received_message.message.id) %></td>
-      <td><%= received_message.sender.username %></td>
+      <td><%= link_to received_message.message_title, message_path(received_message.message_id) %></td>
+      <td><%= received_message.sender_name %></td>
       <td><%= received_message.created_at %></td>
     </tr>
   <% end %>

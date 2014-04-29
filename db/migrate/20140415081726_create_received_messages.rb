@@ -9,5 +9,7 @@ class CreateReceivedMessages < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :received_messages, :sender_id
+    add_index :received_messages, :recipient_id
   end
 end

@@ -27,8 +27,7 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
-    @message.received_message.read = true
-    @message.received_message.save
+    @message.mark_as_read
     @reply_message = Message.new(title: "re:#{@message.title}")
     @sender = @message.sent_message.sender
   end
