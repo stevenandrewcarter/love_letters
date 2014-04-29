@@ -8,9 +8,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-    if user_signed_in?
-      @suggested_events = Event.featured_events(current_user.id)
-    end
+    @suggested_events = Event.featured_events(current_user.id) if user_signed_in?
   end
 
   def new

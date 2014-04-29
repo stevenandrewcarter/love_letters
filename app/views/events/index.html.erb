@@ -2,9 +2,9 @@
   <small>Schedule</small>
 </h1>
 
-<%= render partial: 'shared/suggested_events', locals: {suggested_events: @suggested_events} %>
+<%= render 'shared/suggested_events', suggested_events: @suggested_events %>
 
-<%= render partial: 'shared/admin_tool_bar', locals: {collection: @events, source_name: 'events'} %>
+<%= render 'shared/admin_tool_bar', collection: @events, source_name: 'events' %>
 
 <div>
   <table id="events" class="table table-condensed table-hover">

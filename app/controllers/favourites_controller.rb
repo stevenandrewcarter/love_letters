@@ -7,7 +7,7 @@ class FavouritesController < ApplicationController
   def create
     user = User.find(params[:favourite_user_id])
     current_user.favourites << UserHasFavourite.new(user_id: current_user.id, user_favourite_id: user.id)
-    @msg = current_user.save ? {status: 'ok', message: 'Success!'} : {status: 'failed', message: 'Error!'}
+    @msg = {status: current_user.save, message: current_user.errors.full_messages}
     respond_to { |format| format.json { render json: @msg } }
   end
 

@@ -11,5 +11,5 @@
   <%= @message.body %>
 </p>
 <hr/>
-<%= render 'form', locals: {recipient: @sender, message: @reply_message} %>
+<%= render 'form', recipient: @sender, message: @reply_message %>
 <%= link_to 'Back', user_messages_path(current_user.id) %>

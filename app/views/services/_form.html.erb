@@ -1,5 +1,5 @@
 <%= form_for service do |f| %>
-  <%= render partial: 'shared/alerts', locals: {model: service} %>
+  <%= render 'shared/alerts', model: service %>
   <fieldset>
     <legend>Service</legend>
     <div class="form-group">
