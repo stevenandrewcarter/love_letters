@@ -6,7 +6,7 @@ $ ->
     select_wrapper = $('#state_code_wrapper')
     $('select', select_wrapper).attr('disabled', true)
     country_code = $(this).val()
-    url = "/events/subregion_options?parent_region=#{country_code}&owner=profile"
+    url = "/events/subregion_options?country_code=#{country_code}&owner=profile"
     select_wrapper.load(url)
 
   $('select#locale').change (event) ->

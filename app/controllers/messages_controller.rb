@@ -11,9 +11,9 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message = Message.find(params[:id])
-    @msg = @message.destroy ? {status: 'ok', message: 'Success!'} : {status: 'failed', message: 'Error!'}
-    respond_to { |format| format.json { render json: @msg } }
+    message = Message.find(params[:id])
+    msg = {status: message.destroy, message: message.errors.full_messages}
+    respond_to { |format| format.json { render json: msg } }
   end
 
   def index
