@@ -1,3 +1,4 @@
+# Welcome Controller
 class WelcomeController < ApplicationController
   skip_before_filter :authenticate_user!
 
@@ -8,6 +9,5 @@ class WelcomeController < ApplicationController
   end
 
   def about_us
-
   end
 end

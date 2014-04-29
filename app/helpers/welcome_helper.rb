@@ -1,3 +1,4 @@
+# Welcome Controller Helper
 module WelcomeHelper
   def resource_name
     :user

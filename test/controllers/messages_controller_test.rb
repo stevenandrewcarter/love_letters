@@ -1,12 +1,14 @@
 require 'test_helper'
 
+# Messages Controller Test
 class MessagesControllerTest < ActionController::TestCase
   test 'messages index redirect' do
     get :index
     assert_response :redirect
   end
 
-  class AuthenticatedMessagesControllerTest < ActionController::TestCase
+  # Logged In Messages Controller Test
+  class LoggedInMessagesControllerTest < ActionController::TestCase
     def setup
       sign_in users(:valid_user_test)
     end
@@ -17,27 +19,27 @@ class MessagesControllerTest < ActionController::TestCase
     end
 
     test 'messages create' do
-      post :create, {'message' => {'id' => 1, 'user_id' => 1, 'title' => 'test', 'body' => 'test'}}
+      post :create, 'message' => {'id' => 1, 'user_id' => 1, 'title' => 'test', 'body' => 'test'}
       assert_response :redirect
     end
 
     test 'messages create invalid' do
-      post :create, {'message' => {'id' => 1, 'user_id' => 1, 'title' => '', 'body' => 'test'}}
+      post :create, 'message' => {'id' => 1, 'user_id' => 1, 'title' => '', 'body' => 'test'}
       assert_response :success
     end
 
     test 'messages delete' do
-      delete :destroy, {'id' => 1, 'user_id' => 1, 'format' => 'json'}
+      delete :destroy, 'id' => 1, 'user_id' => 1, 'format' => 'json'
       assert_response :success
     end
 
     test 'messages new' do
-      get :new, {'id' => 1, 'user_id' => 1}
+      get :new, 'id' => 1, 'user_id' => 1
       assert_response :success
     end
 
     test 'messages show' do
-      get :show, {'id' => 1, 'user_id' => 1}
+      get :show, 'id' => 1, 'user_id' => 1
       assert_response :success
     end
   end

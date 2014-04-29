@@ -1,3 +1,4 @@
+# Model for the Message Table
 class Message < ActiveRecord::Base
   has_one :sent_message, dependent: :destroy
   has_one :received_message, dependent: :destroy

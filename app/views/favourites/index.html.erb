@@ -16,7 +16,7 @@
       <td>
         <div class="btn-group" role="toolbar">
           <a href="/messages/new?recipient_id=<%= favourite.favourite_user.id %>" class="btn btn-xs btn-primary btn-group" data-toggle="tooltip" data-placement="top" title="Message"><span class="glyphicon glyphicon-envelope"></span></a>
-          <% if current_user.has_favourite?(favourite.favourite_user) %>
+          <% if current_user.favourite?(favourite.favourite_user) %>
             <a href="" onclick="window.removeFromFavourites(<%= current_user.id %>, <%= favourite.favourite_user.id %>)" class="btn btn-xs btn-group" data-toggle="tooltip" data-placement="top" title="Favourite"><span class="glyphicon glyphicon-star"></span></a>
           <% else %>
             <a href="" onclick="window.addToFavourites(<%= current_user.id %>, <%= favourite.favourite_user.id %>)" class="btn btn-xs btn-group" data-toggle="tooltip" data-placement="top" title="Favourite"><span class="glyphicon glyphicon-star-empty"></span></a>

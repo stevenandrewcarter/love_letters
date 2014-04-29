@@ -1,3 +1,4 @@
+# Search Controller
 class SearchController < ApplicationController
   def index
     @search_result = []

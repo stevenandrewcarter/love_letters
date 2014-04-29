@@ -1,8 +1,9 @@
+# Events Controller
 class EventsController < ApplicationController
   skip_before_filter :authenticate_user!
 
   def subregion_options
-    render partial: 'shared/country_select', locals: { owner: params[:owner].to_sym, country_code: params[:country_code] }
+    render partial: 'shared/country_select', locals: {owner: params[:owner].to_sym, country_code: params[:country_code]}
   end
 
   def index
@@ -27,8 +28,8 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-    @msg = @event.destroy ? {:status => 'ok', :message => 'Success!'} : {:status => 'failed', :message => 'Error!'}
-    respond_to { |format| format.json { render :json => @msg } }
+    @msg = @event.destroy ? {status: 'ok', message: 'Success!'} : {status: 'failed', message: 'Error!'}
+    respond_to { |format| format.json { render json: @msg } }
   end
 
   def show

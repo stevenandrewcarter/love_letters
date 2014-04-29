@@ -1,6 +1,7 @@
 require 'test_helper'
 
-class WorkshopTest < ActiveSupport::TestCase
+# Test the Product Model
+class ProductTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

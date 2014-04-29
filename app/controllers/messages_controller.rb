@@ -3,12 +3,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     if @message.save
-      @sender = current_user
-      @receiver = User.where(username: params[:message][:recipient]).first
-      @sender.sent_messages << SentMessage.new(message_id: @message.id, recipient_id: @receiver.id)
-      @sender.save
-      @receiver.received_messages << ReceivedMessage.new(message_id: @message.id, sender_id: @sender.id)
-      @receiver.save
+      update_message_links
       redirect_to user_messages_path(current_user)
     else
       render :new
@@ -17,8 +12,8 @@ class MessagesController < ApplicationController
 
   def destroy
     @message = Message.find(params[:id])
-    @msg = @message.destroy ? {:status => 'ok', :message => 'Success!'} : {:status => 'failed', :message => 'Error!'}
-    respond_to { |format| format.json { render :json => @msg } }
+    @msg = @message.destroy ? {status: 'ok', message: 'Success!'} : {status: 'failed', message: 'Error!'}
+    respond_to { |format| format.json { render json: @msg } }
   end
 
   def index
@@ -39,6 +34,15 @@ class MessagesController < ApplicationController
   end
 
   private
+
+  def update_message_links
+    @sender = current_user
+    @receiver = User.where(username: params[:message][:recipient]).first
+    @sender.sent_messages << SentMessage.new(message_id: @message.id, recipient_id: @receiver.id)
+    @sender.save
+    @receiver.received_messages << ReceivedMessage.new(message_id: @message.id, sender_id: @sender.id)
+    @receiver.save
+  end
 
   def message_params
     params.require(:message).permit(:title, :body)

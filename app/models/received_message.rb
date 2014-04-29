@@ -1,3 +1,4 @@
+# Model for the ReceivedMessage Table
 class ReceivedMessage < ActiveRecord::Base
   belongs_to :message
   belongs_to :sender, class_name: 'User', foreign_key: 'sender_id'

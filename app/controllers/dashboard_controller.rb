@@ -1,3 +1,4 @@
+# Dashboard Controller
 class DashboardController < ApplicationController
   def index
     @matches = User.matches(current_user.id).limit(4)
