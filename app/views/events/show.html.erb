@@ -11,5 +11,9 @@
   <strong>Information:</strong>
   <%= @event.description %>
 </p>
+<p>
+  <strong>Location:</strong>
+  <%= @event.country %> <%= @event.province %>
+</p>
 <hr/>
 <%= link_to 'Back', events_path %>

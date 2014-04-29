@@ -5,8 +5,19 @@ class Event < ActiveRecord::Base
   validates :date, presence: true
   validates :name, presence: true
   validates :description, presence: true
+  validates :country_code, presence: true
+  validates :state_code, presence: true
 
   def self.featured_events(user_id)
     Event.all.limit(4)
+  end
+
+  def country
+    Carmen::Country.coded(country_code).name
+  end
+
+  def province
+    country = Carmen::Country.coded(country_code)
+    country.subregions.coded(state_code).name
   end
 end

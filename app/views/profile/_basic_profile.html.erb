@@ -1,11 +1,11 @@
-<%= image_tag current_user.profile.photo.url(:medium) %>
-<%= form_for [current_user, current_user.profile] do |f| %>
-  <%= render partial: 'shared/alerts', locals: {model: current_user.profile} %>
+<%= form_for [current_user, @profile] do |f| %>
+  <%= render partial: 'shared/alerts', locals: {model: @profile} %>
   <fieldset>
     <legend>Profile</legend>
+    <%= image_tag current_user.profile.photo.url(:medium) %>
     <div class="progress">
-      <div class="progress-bar" role="progressbar" aria-valuenow="<%= current_user.profile.complete %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= current_user.profile.complete %>%;">
-        <%= current_user.profile.complete %>%
+      <div class="progress-bar" role="progressbar" aria-valuenow="<%= @profile.complete %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= current_user.profile.complete %>%;">
+        <%= @profile.complete %>%
       </div>
     </div>
     <div class="form-group">
@@ -38,6 +38,7 @@
         <%= f.file_field :photo, class: 'form-control' %>
       </div>
     </div>
+    <%= render partial: 'shared/country_select', locals: {owner: :profile, country_code: @profile.country_code} %>
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
         <%= f.submit 'Save', class: 'btn btn-primary' %>

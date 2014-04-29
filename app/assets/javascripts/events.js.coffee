@@ -22,3 +22,14 @@ window.deleteEvent = (id) ->
     error: ->
       $('#delete_events').removeClass('selected')
     dataType: "json"
+
+$ ->
+  $('select#event_country_code').change (event) ->
+    select_wrapper = $('#state_code_wrapper')
+    $('select', select_wrapper).attr('disabled', true)
+    country_code = $(this).val()
+    url = "/events/subregion_options?parent_region=#{country_code}&owner=event"
+    select_wrapper.load(url)
+
+  $('select#locale').change (event) ->
+    $(@).closest('form').submit()

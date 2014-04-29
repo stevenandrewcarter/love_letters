@@ -1,6 +1,10 @@
 class EventsController < ApplicationController
   skip_before_filter :authenticate_user!
 
+  def subregion_options
+    render partial: 'shared/country_select', locals: { owner: params[:owner].to_sym, country_code: params[:country_code] }
+  end
+
   def index
     @events = Event.all
     if user_signed_in?
@@ -34,6 +38,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :date, :description, :image)
+    params.require(:event).permit(:name, :date, :description, :image, :country_code, :state_code)
   end
 end

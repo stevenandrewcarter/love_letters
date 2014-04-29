@@ -35,3 +35,5 @@ References
 [Devise](https://github.com/plataformatec/devise)
 
 [ChartJS](http://www.chartjs.org/)
+
+[Cities](https://github.com/joecorcoran/cities)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424114521) do
+ActiveRecord::Schema.define(version: 20140429090453) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20140424114521) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "country_code"
+    t.string   "state_code"
   end
 
   create_table "messages", force: true do |t|
@@ -45,6 +47,8 @@ ActiveRecord::Schema.define(version: 20140424114521) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "country_code"
+    t.string   "state_code"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
@@ -93,10 +97,6 @@ ActiveRecord::Schema.define(version: 20140424114521) do
     t.datetime "updated_at"
     t.string   "username"
     t.boolean  "is_administrator"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

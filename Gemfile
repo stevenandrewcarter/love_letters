@@ -35,3 +35,4 @@ group :test, :development do
 end
 
 gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'carmen-rails', '~> 1.0.0'
