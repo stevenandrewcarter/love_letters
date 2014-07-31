@@ -25,3 +25,11 @@ doc/
 
 # Databases
 *.sqlite3
+
+# Chef Stuff
+chef/cookbooks
+chef/tmp
+
+# Vagrant Stuff
+.vagrant
+
