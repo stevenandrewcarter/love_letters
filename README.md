@@ -44,3 +44,4 @@ http://manuel.manuelles.nl/blog/2013/07/23/developing-ruby-on-rails-on-windows/
 http://www.jetbrains.com/pycharm/quickstart/configuring_for_vm.html
 http://stackoverflow.com/questions/11325479/how-to-control-the-version-of-chef-that-vagrant-uses-to-provision-vms
 https://docs.vagrantup.com/v2/provisioning/chef_solo.html
+https://gorails.com/guides/using-vagrant-for-rails-development

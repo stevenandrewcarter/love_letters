@@ -12,23 +12,33 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = 'precise64'
   config.vm.box_url = 'http://files.vagrantup.com/precise64.box'
-  config.vm.network :forwarded_port, guest: 3000, host: 3000  # forward the default rails port
+  config.vm.network :forwarded_port, guest: 3000, host: 3000 # forward the default rails port
   config.omnibus.chef_version = :latest
 
+  # Use Chef Solo to provision our virtual machine
   config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = %w(chef/cookbooks chef/site-cookbooks)
-    chef.roles_path     = [[:host, 'chef/roles']]
+    chef.cookbooks_path = ["cookbooks", "site-cookbooks"]
 
-    chef.add_role 'rails-dev'
+    chef.add_recipe "apt"
+    chef.add_recipe "nodejs"
+    chef.add_recipe "ruby_build"
+    chef.add_recipe "rbenv::user"
+    chef.add_recipe "rbenv::vagrant"
+
+    # Install Ruby 2.1.2 and Bundler
+    # Set an empty root password for MySQL to make things simple
     chef.json = {
-        "rbenv" => {
-            "global" => "2.0.0-p247",
-            "rubies" => ["2.0.0-p247"],
-            "gems" => {
-                "2.0.0-p247" => [
-                    { "name" => "bundler" }
-                ]
-            }
+        rbenv: {
+            user_installs: [{
+                                user: 'vagrant',
+                                rubies: ["2.1.2"],
+                                global: "2.1.2",
+                                gems: {
+                                    "2.1.2" => [
+                                        { name: "bundler" }
+                                    ]
+                                }
+                            }]
         }
     }
   end

@@ -32,4 +32,4 @@ chef/tmp
 
 # Vagrant Stuff
 .vagrant
-
+cookbooks
