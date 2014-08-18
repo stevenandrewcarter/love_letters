@@ -1,4 +1,4 @@
-if env['RAILS_ENV'] == 'development'
+if ENV['RAILS_ENV'] == 'development'
   require 'rubocop/rake_task'
 
   desc 'Run RuboCop on the project'
