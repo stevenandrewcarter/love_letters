@@ -86,6 +86,7 @@ GEM
     parser (2.1.7)
       ast (~> 1.1)
       slop (~> 3.4, >= 3.4.5)
+    pg (0.17.1)
     polyglot (0.3.4)
     powerpack (0.0.9)
     rack (1.5.2)
@@ -169,6 +170,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   paperclip!
+  pg
   rails (= 4.1.0)
   rubocop
   sass-rails (~> 4.0.0)

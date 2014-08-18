@@ -22,6 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "apt"
     chef.add_recipe "nodejs"
     chef.add_recipe "ruby_build"
+    chef.add_recipe "postgresql"
     chef.add_recipe "rbenv::user"
     chef.add_recipe "rbenv::vagrant"
 
@@ -29,16 +30,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Set an empty root password for MySQL to make things simple
     chef.json = {
         rbenv: {
-            user_installs: [{
-                                user: 'vagrant',
-                                rubies: ["2.1.2"],
-                                global: "2.1.2",
-                                gems: {
-                                    "2.1.2" => [
-                                        { name: "bundler" }
-                                    ]
-                                }
-                            }]
+            user_installs: [
+                {
+                    user: 'vagrant',
+                    rubies: ["2.1.2"],
+                    global: "2.1.2",
+                    gems: {
+                        "2.1.2" => [
+                            {name: "bundler"}
+                        ]
+                    }
+                }]
         }
     }
   end
