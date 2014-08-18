@@ -34,5 +34,9 @@ group :test, :development do
   gem 'sqlite3'
 end
 
+group :production do
+  gem 'pg'
+end
+
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'carmen-rails', '~> 1.0.0'
