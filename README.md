@@ -38,6 +38,8 @@ References
 
 [Cities](https://github.com/joecorcoran/cities)
 
+[DailyPlot](http://code.daypilot.org/17910/html5-event-calendar-open-source)
+
 Windows References
 ------------------
 http://manuel.manuelles.nl/blog/2013/07/23/developing-ruby-on-rails-on-windows/

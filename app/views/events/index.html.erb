@@ -1,5 +1,5 @@
 <h1>Events
-  <small>Schedule</small>
+    <small>Schedule</small>
 </h1>
 
 <%= render 'shared/suggested_events', suggested_events: @suggested_events %>
@@ -7,25 +7,52 @@
 <%= render 'shared/admin_tool_bar', collection: @events, source_name: 'events' %>
 
 <div>
-  <table id="events" class="table table-condensed table-hover">
-    <thead>
-    <tr>
-      <th width="1%"></th>
-      <th>Date</th>
-      <th>Event</th>
-      <th width="1%"></th>
-    </tr>
-    </thead>
-    <% @events.order(date: :desc).each do |event| %>
-      <tr id="<%= event.id %>">
-        <td>
-          <% if can? :manage, event %>
-            <input id="chk_event_<%= event.id %>" type="checkbox">
-          <% end %></td>
-        <td><%= event.date %></td>
-        <td><%= event.name %></td>
-        <td><a href="/events/<%= event.id %>" class="btn btn-xs btn-group" data-toggle="tooltip" data-placement="top" title="Information"><span class="glyphicon glyphicon-info-sign"></span></a></td>
-      </tr>
-    <% end %>
-  </table>
+    <div id="dp"></div>
+
+    <script type="text/javascript">
+        var dp = new DayPilot.Month("dp");
+        dp.startDate = "2013-03-25";  // or just dp.startDate = "2013-03-25";
+        dp.eventMoveHandling = "Disabled";
+        dp.eventResizeHandling = "Disabled";
+        // generate and load events
+        for (var i = 0; i < 10; i++) {
+            var duration = Math.floor(Math.random() * 1.2);
+            var start = Math.floor(Math.random() * 6) - 3; // -3 to 3
+
+            var e = new DayPilot.Event({
+                start: new DayPilot.Date("2013-03-04T00:00:00").addDays(start),
+                end: new DayPilot.Date("2013-03-04T12:00:00").addDays(start).addDays(duration),
+                id: DayPilot.guid(),
+                text: "Event " + i
+            });
+            dp.events.add(e);
+        }
+        dp.dis
+        dp.init();
+
+    </script>
+
+    <table id="events" class="table table-condensed table-hover">
+        <thead>
+        <tr>
+            <th width="1%"></th>
+            <th>Date</th>
+            <th>Event</th>
+            <th width="1%"></th>
+        </tr>
+        </thead>
+        <% @events.order(date: :desc).each do |event| %>
+            <tr id="<%= event.id %>">
+                <td>
+                    <% if can? :manage, event %>
+                        <input id="chk_event_<%= event.id %>" type="checkbox">
+                    <% end %></td>
+                <td><%= event.date %></td>
+                <td><%= event.name %></td>
+                <td>
+                    <a href="/events/<%= event.id %>" class="btn btn-xs btn-group" data-toggle="tooltip" data-placement="top" title="Information"><span class="glyphicon glyphicon-info-sign"></span></a>
+                </td>
+            </tr>
+        <% end %>
+    </table>
 </div>
